@@ -18,15 +18,15 @@ public class gameOperations {
 
 	Scanner keyboard = new Scanner(System.in);
 
-	static char[][] gameBoard = { 	{ ' ', '|', ' ', '|', ' ' }, 		
+	static char[][] gameBoard = {{ ' ', '|', ' ', '|', ' ' },
 									{ '-', '+', '-', '+', '-' }, 
 									{ ' ', '|', ' ', '|', ' ' },
 									{ '-', '+', '-', '+', '-' }, 
-									{ ' ', '|', ' ', '|', ' ' } };
+									{ ' ', '|', ' ', '|', ' ' }};
 
 	protected int computerPositionMove = 1000;
 
-	//prints the state of the game board
+	//Prints the state of the game board
 	protected void printGameBoard() {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
@@ -37,7 +37,7 @@ public class gameOperations {
 	}
 
 	/*
-	 * places 'X' or 'O' to the game board]
+	 * Method: places 'X' or 'O' to the game board]
 	 * 
 	 * @param: gameboard, user (player or cpu), position that user enters
 	 */
@@ -87,7 +87,7 @@ public class gameOperations {
 	}
 
 	/*
-	 * method that checks the game board if there is a winner or draw
+	 * Method: that checks the game board if there is a winner or draw
 	 * 
 	 * @param: status of the game board
 	 * 
@@ -146,17 +146,13 @@ public class gameOperations {
 	}
 
 	/*
-	 * checks if player put the 'X' in the right positions
+	 * Method: checks if player put the 'X' in the right positions
 	 * 
 	 * @param: previousPosition - array that has all the previous positions chosen
 	 * from the player and the cpu. positionInput - the positions that user has
 	 * chosen positionsGoneCounter - counter of how many positions have gone by
 	 * 
 	 * @returns: valid position
-	 *
-	 * P.S only checks for 1 iteration of filled position, if user picks again,
-	 * method will not work. in my dummy class, i still have the code that checks
-	 * for all for iterations but for the sake of space, i will not use it here.
 	 */
 	protected int checkUserPlacement(int positionInput) {
 		Scanner keyboard = new Scanner(System.in);
@@ -177,6 +173,8 @@ public class gameOperations {
 	 * checks if cpu's random number is put in the right place
 	 * 
 	 * @param: same as checkUserPlacement returns: a valid position
+	 * 
+	 * @returns: available random number
 	 */
 	protected int checkCpuPlacement(int previousPositions[], int previousPositionsCounter, int randomNumber) { 
 		int i = 0;
@@ -189,7 +187,7 @@ public class gameOperations {
 		}
 		return randomNumber;
 	}
-	//check if game is over after player's turn
+	//Checks if game is over after player's turn
 	protected boolean gameOver() {
 
 		if (checkForWinner().equalsIgnoreCase("player wins"))
@@ -202,8 +200,10 @@ public class gameOperations {
 			return false;
 
 	}
-
+	//Starts the game
 	protected void play() {
+		System.out.println("Rules:	Each grid in the display board counts from position of 1-9.\n"
+				+ "	Enter a number from 1-9 then press enter to place your symbol.");
 		MiniMax callPlay = new MiniMax();
 		callPlay.play();
 	}

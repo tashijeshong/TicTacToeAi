@@ -12,6 +12,11 @@ public class MiniMax extends gameOperations {
 
 	}
 
+	/*
+	 * @param: int x and int y from gameBoard array
+	 * 
+	 * @returns: returns the position
+	 */
 	protected int getPositionFromArray(int x, int y) {
 
 		if (x == 0 && y == 0)
@@ -93,6 +98,12 @@ public class MiniMax extends gameOperations {
 
 	}
 
+	/*
+	 * 
+	 * @param: current state of the gameBoard array
+	 * 
+	 * @returns: returns an int as a score for the game
+	 */
 	protected int evaluateScore(char[][] gameBoard) {
 
 		if (checkForWinner().equalsIgnoreCase("player wins"))
@@ -129,7 +140,7 @@ public class MiniMax extends gameOperations {
 		int maxEval = Integer.MIN_VALUE;
 		int minEval = Integer.MAX_VALUE;
 
-		// trying to maximize for the cpu
+		// Method maximizes the score for the CPU
 		for (int i = 0; i < getAvailableCells(gameBoard).size(); i++) {
 			Point point = getAvailableCells(gameBoard).get(i);
 
@@ -146,7 +157,7 @@ public class MiniMax extends gameOperations {
 					// System.out.println("Computer score for the position " + pointPosition + " = " + currentScore); 
 					if (currentScore >= 0)
 						if (depth == 0)
-							computerPositionMove = pointPosition; // maximizer is the CPU
+							computerPositionMove = pointPosition; 
 				if (currentScore == 1) {
 					gameBoard[point.x][point.y] = ' ';
 					break;
@@ -195,7 +206,8 @@ public class MiniMax extends gameOperations {
 			previousPositions[previousPositionsCounter] = randomNumber;
 		}
 
-		while (gameOver() == false) { // while-loop checks if game is over after cpu's turn
+		// while-loop checks if game is over after cpu's turn
+		while (gameOver() == false) { 
 			System.out.println("choose a position from the board: ");
 
 			cpuTurn = false;
@@ -208,11 +220,9 @@ public class MiniMax extends gameOperations {
 			System.out.println("You chose position " + positionInput);
 
 			previousPositionsCounter++;
-			previousPositions[previousPositionsCounter] = positionInput; // uses the array (previousPositions) to check
-																			// if a spot is already filled for a
-																			// player's pick
-
-			if (gameOver() == true) { // method - check if game is over after player's turn
+			previousPositions[previousPositionsCounter] = positionInput; 
+			
+			if (gameOver() == true) { 
 				break;
 			}
 
